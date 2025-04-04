@@ -4,6 +4,38 @@ export const personalInfo = {
   height: "1.73",
   about: "יוני הוא בחור ערכי, שאפתן, עם חיבור עמוק לעולם התורני ולתורה. בעל אישיות חמה, ראש פתוח, חריצות והתמדה. נמצא בשלב של בניית עתידו המקצועי והאישי תוך השקעה בעבודתו, לימודיו ובפיתוח עצמי.",
   lookingFor: "בחורה דתית-תורנית, ערכית וחכמה, השואפת להקים בית המבוסס על ערכי תורה ודרך ארץ, לצד פתיחות מחשבתית ואהבה ללמידה והתפתחות. עדיפות לרקע אקדמי.",
+  photos: [
+    {
+      id: 1,
+      src: "/assets/images/profile-pic.jpg",
+      alt: "תמונת פרופיל של יוני אדלר",
+      caption: "יוני אדלר"
+    },
+    {
+      id: 2,
+      src: "/assets/images/with-dog.jpg",
+      alt: "יוני עם כלב",
+      caption: "יוני והכלב"
+    },
+    {
+      id: 3,
+      src: "/assets/images/piano.jpg",
+      alt: "יוני מנגן בפסנתר",
+      caption: "יוני מנגן בפסנתר"
+    },
+    {
+      id: 4,
+      src: "/assets/images/military.jpg",
+      alt: "יוני בצבא",
+      caption: "יוני בטקס צבאי"
+    },
+    {
+      id: 5,
+      src: "/assets/images/outdoor.jpg",
+      alt: "יוני בחוץ",
+      caption: "יוני בפעילות חוץ"
+    }
+  ],
   education: [
     {
       degree: "תואר ראשון במדעי המחשב",
@@ -177,8 +209,10 @@ export const personalInfo = {
       email: "chavi.adler@gmail.com"
     },
     whatsapp: {
-      defaultMessage: "שלום, אני מעוניין לברר פרטים נוספים על יוני אדלר. אשמח לשוחח בנושא. תודה!"
-    }
+      defaultMessage: "שלום, רציתי לברר לגבי יוני אדלר :)",
+      phone: "0545902483"
+    },
+    siteUrl: "https://yoni-adler-resume.com"
   }
 };
 
