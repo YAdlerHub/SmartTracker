@@ -17,11 +17,14 @@ const Layout = ({ children }: LayoutProps) => {
   }, [location]);
   
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-50">
+      <div className="fixed top-0 left-0 w-full h-2 gradient-bg z-50"></div>
       <Navbar />
-      <div className="container mx-auto px-4 pt-20 pb-12 flex-grow">
-        {children}
-      </div>
+      <main className="flex-grow pt-20 pb-12">
+        <div className="container mx-auto px-4 md:px-6">
+          {children}
+        </div>
+      </main>
       <Footer />
     </div>
   );

@@ -54,8 +54,6 @@ const Contact = () => {
       email: "",
       phone: "",
       message: "",
-      is_read: false,
-      submission_time: new Date().toISOString(),
     },
   });
 
@@ -63,7 +61,14 @@ const Contact = () => {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     try {
-      await apiRequest("POST", "/api/contact", data);
+      // Add required fields for the API
+      const contactData = {
+        ...data,
+        is_read: false,
+        submission_time: new Date().toISOString()
+      };
+
+      await apiRequest("POST", "/api/contact", contactData);
 
       toast({
         title: "הודעה נשלחה בהצלחה!",
@@ -75,8 +80,6 @@ const Contact = () => {
         email: "",
         phone: "",
         message: "",
-        is_read: false,
-        submission_time: new Date().toISOString(),
       });
     } catch (error) {
       console.error("Error submitting form:", error);

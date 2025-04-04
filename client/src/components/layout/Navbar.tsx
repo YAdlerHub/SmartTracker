@@ -33,14 +33,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white shadow-md" : "bg-white/95 shadow-sm"}`}>
+    <nav className={`fixed top-2 w-full z-40 transition-all duration-300`}>
       <div className="container mx-auto px-4">
-        <div className="flex justify-between h-16">
-          <div className="flex justify-between w-full">
+        <div className={`flex justify-between h-16 rounded-xl ${scrolled ? "glass-effect shadow-lg" : "bg-white/90 shadow-md"}`}>
+          <div className="flex justify-between w-full px-4">
             <div className="flex items-center">
               <div 
                 onClick={() => handleNavigate("/")}
-                className="text-xl font-bold text-primary cursor-pointer"
+                className="text-xl font-bold gradient-text cursor-pointer"
               >
                 יוני אדלר
               </div>
@@ -51,8 +51,10 @@ const Navbar = () => {
                   <div 
                     key={link.path}
                     onClick={() => handleNavigate(link.path)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out cursor-pointer
-                      ${location === link.path ? "text-primary" : "text-gray-700 hover:text-primary"}`}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 cursor-pointer
+                      ${location === link.path 
+                        ? "text-primary font-bold" 
+                        : "text-gray-700 hover:text-primary hover:scale-105"}`}
                   >
                     {link.name}
                   </div>
@@ -60,7 +62,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden px-4">
             <Button 
               variant="ghost" 
               size="icon" 
@@ -75,13 +77,15 @@ const Navbar = () => {
       
       {/* Mobile menu */}
       <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+        <div className="mt-2 mx-4 px-2 pt-2 pb-3 space-y-1 rounded-xl glass-effect shadow-lg">
           {navLinks.map((link) => (
             <div 
               key={link.path}
               onClick={() => handleNavigate(link.path)}
-              className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer
-                ${location === link.path ? "text-primary bg-gray-50" : "text-gray-700 hover:text-primary hover:bg-gray-50"}`}
+              className={`block px-3 py-3 rounded-md text-base font-medium cursor-pointer transition-all duration-300
+                ${location === link.path 
+                  ? "text-primary bg-white/50" 
+                  : "text-gray-700 hover:text-primary hover:bg-white/30"}`}
             >
               {link.name}
             </div>
