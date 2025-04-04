@@ -7,31 +7,31 @@ export const personalInfo = {
   photos: [
     {
       id: 1,
-      src: "/assets/images/profile-pic.jpg",
+      src: "/images/profile-pic.jpg",
       alt: "תמונת פרופיל של יוני אדלר",
       caption: "יוני אדלר"
     },
     {
       id: 2,
-      src: "/assets/images/with-dog.jpg",
+      src: "/images/with-dog.jpg",
       alt: "יוני עם כלב",
       caption: "יוני והכלב"
     },
     {
       id: 3,
-      src: "/assets/images/piano.jpg",
+      src: "/images/piano.jpg",
       alt: "יוני מנגן בפסנתר",
       caption: "יוני מנגן בפסנתר"
     },
     {
       id: 4,
-      src: "/assets/images/military.jpg",
+      src: "/images/military.jpg",
       alt: "יוני בצבא",
       caption: "יוני בטקס צבאי"
     },
     {
       id: 5,
-      src: "/assets/images/outdoor.jpg",
+      src: "/images/outdoor.jpg",
       alt: "יוני בחוץ",
       caption: "יוני בפעילות חוץ"
     }
