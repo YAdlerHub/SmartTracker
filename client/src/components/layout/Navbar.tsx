@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { navLinks } from "@/lib/constants";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -27,7 +27,8 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  const closeMenu = () => {
+  const handleNavigate = (path: string) => {
+    navigate(path);
     setIsOpen(false);
   };
 
@@ -37,21 +38,24 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex justify-between w-full">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-primary cursor-pointer">
+              <div 
+                onClick={() => handleNavigate("/")}
+                className="text-xl font-bold text-primary cursor-pointer"
+              >
                 יוני אדלר
-              </Link>
+              </div>
             </div>
             <div className="hidden md:flex md:items-center">
               <div className="flex space-x-4 space-x-reverse">
                 {navLinks.map((link) => (
-                  <Link 
-                    key={link.path} 
-                    href={link.path}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out
+                  <div 
+                    key={link.path}
+                    onClick={() => handleNavigate(link.path)}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out cursor-pointer
                       ${location === link.path ? "text-primary" : "text-gray-700 hover:text-primary"}`}
                   >
                     {link.name}
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
@@ -73,15 +77,14 @@ const Navbar = () => {
       <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
           {navLinks.map((link) => (
-            <Link 
-              key={link.path} 
-              href={link.path}
-              className={`block px-3 py-2 rounded-md text-base font-medium 
+            <div 
+              key={link.path}
+              onClick={() => handleNavigate(link.path)}
+              className={`block px-3 py-2 rounded-md text-base font-medium cursor-pointer
                 ${location === link.path ? "text-primary bg-gray-50" : "text-gray-700 hover:text-primary hover:bg-gray-50"}`}
-              onClick={closeMenu}
             >
               {link.name}
-            </Link>
+            </div>
           ))}
         </div>
       </div>

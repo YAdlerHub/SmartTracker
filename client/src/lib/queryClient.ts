@@ -41,6 +41,50 @@ export const getQueryFn: <T>(options: {
     return await res.json();
   };
 
+// Function to log page visits
+export async function logPageVisit(pagePath: string) {
+  try {
+    const browser = detectBrowser();
+    const screenSize = `${window.innerWidth}x${window.innerHeight}`;
+    
+    await apiRequest("POST", "/api/visitor", {
+      ip_address: "Anonymous", // We don't collect actual IP addresses for privacy
+      user_agent: navigator.userAgent,
+      browser,
+      screen_size: screenSize,
+      page_visited: pagePath,
+      visit_time: new Date().toISOString()
+    });
+    
+    console.log(`Page visit logged: ${pagePath}`);
+  } catch (error) {
+    console.error("Failed to log page visit:", error);
+  }
+}
+
+// Helper function to detect browser
+function detectBrowser(): string {
+  const userAgent = navigator.userAgent;
+  
+  if (userAgent.indexOf("Firefox") > -1) {
+    return "Firefox";
+  } else if (userAgent.indexOf("SamsungBrowser") > -1) {
+    return "Samsung Internet";
+  } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+    return "Opera";
+  } else if (userAgent.indexOf("Trident") > -1) {
+    return "Internet Explorer";
+  } else if (userAgent.indexOf("Edge") > -1) {
+    return "Edge";
+  } else if (userAgent.indexOf("Chrome") > -1) {
+    return "Chrome";
+  } else if (userAgent.indexOf("Safari") > -1) {
+    return "Safari";
+  } else {
+    return "Unknown";
+  }
+}
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
